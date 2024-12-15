@@ -3,6 +3,7 @@ import 'package:flag_frenzy/main.dart';
 import 'package:flag_frenzy/screens/about_screen.dart';
 import 'package:flag_frenzy/screens/leaderboard_screen.dart';
 import 'package:flag_frenzy/screens/settings_screen.dart';
+import 'package:flag_frenzy/game/game_selection_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -27,6 +28,10 @@ final router = GoRouter(
     GoRoute(
       path: '/about',
       builder: (context, state) => const AboutScreen(),
+    ),
+    GoRoute(
+      path: '/game-selection',
+      builder: (context, state) => const GameSelectionScreen(),
     ),
   ],
 ); 

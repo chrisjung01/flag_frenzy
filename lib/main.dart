@@ -62,7 +62,7 @@ class MainMenu extends StatelessWidget {
               const SizedBox(height: 50),
               MenuButton(
                 text: 'Spielen',
-                onPressed: () => context.go('/play'),
+                onPressed: () => context.go('/game-selection'),
               ),
               MenuButton(
                 text: 'Einstellungen',
