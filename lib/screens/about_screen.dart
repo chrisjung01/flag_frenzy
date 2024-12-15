@@ -11,7 +11,6 @@ class AboutScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsNotifierProvider);
-    final language = settings.language;
 
     return Scaffold(
       appBar: AppBar(
