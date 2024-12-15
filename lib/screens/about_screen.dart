@@ -15,41 +15,79 @@ class AboutScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.go('/'),
         ),
         title: const Text('Über'),
       ),
-      body: FutureBuilder<PackageInfo>(
-        future: PackageInfo.fromPlatform(),
-        builder: (context, snapshot) {
-          final logger = ref.read(customLoggerProvider);
-          logger
-              .log('AboutScreen build with version ${snapshot.data?.version}');
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.indigo, Colors.blue],
+          ),
+        ),
+        child: FutureBuilder<PackageInfo>(
+          future: PackageInfo.fromPlatform(),
+          builder: (context, snapshot) {
+            final logger = ref.read(customLoggerProvider);
+            logger.log('AboutScreen build with version ${snapshot.data?.version}');
 
-          final version = snapshot.data?.version ?? '1.0.0';
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            final version = snapshot.data?.version ?? '1.0.0';
+            return ListView(
+              padding: const EdgeInsets.all(16),
               children: [
-                Text('Flag Frenzy $version'),
-                const SizedBox(height: 20),
-                const Text('Verwendete Bibliotheken:'),
-                const SizedBox(height: 10),
-                const Text('• Flutter/Dart'),
-                const Text('• Flame Game Engine'),
-                const Text('• Flutter Riverpod'),
-                const Text('• Go Router'),
-                const Text('• Package Info Plus'),
-                const SizedBox(height: 20),
-                const Text('Entwickelt mit ❤️ von:'),
-                const Text('• Christian Jung'),
-                const Text('• GitHub Copilot'),
+                Text(
+                  'Flag Frenzy $version',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
+                const Text(
+                  'Verwendete Bibliotheken:',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text('• Flutter/Dart',
+                    style: TextStyle(color: Colors.white)),
+                const Text('• Flame Game Engine',
+                    style: TextStyle(color: Colors.white)),
+                const Text('• Flutter Riverpod',
+                    style: TextStyle(color: Colors.white)),
+                const Text('• Go Router',
+                    style: TextStyle(color: Colors.white)),
+                const Text('• Package Info Plus',
+                    style: TextStyle(color: Colors.white)),
+                const SizedBox(height: 32),
+                const Text(
+                  'Entwickelt mit ❤️ von:',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text('• Christian Jung',
+                    style: TextStyle(color: Colors.white)),
+                const Text('• GitHub Copilot',
+                    style: TextStyle(color: Colors.white)),
               ],
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
