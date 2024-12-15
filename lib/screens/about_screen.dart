@@ -59,6 +59,7 @@ class AboutScreen extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
+                // todo(cj): Handle this the better way
                 const Text('• Flutter/Dart',
                     style: TextStyle(color: Colors.white)),
                 const Text('• Flame Game Engine',
